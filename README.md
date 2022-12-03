@@ -43,6 +43,7 @@ kubctl get deployment
 5.Run locally:
 open your browser:
 . http://localhost/bitcoin
+
 . http://localhost/ynet
 
 6. To stop minikube run the following command:
