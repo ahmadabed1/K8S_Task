@@ -1,7 +1,7 @@
 # **kubernetes Task**
 
 ## About
-This repository represent kubernetes project, it has developed using minikube. The mean idea to publish 3 website with 3 different paths, for that i have used ingress technology to manage network connection. For each website i have used yaml file , which has:
+This repository represent kubernetes project, it has developed using minikube. The mean idea to publish 3 website with 2 different paths, for that i have used ingress technology to manage network connection. For each website i have used yaml file , which has:
 
 - Deployment: build the pod under supervison(to avoid failure), every pod . . . - know the docker image to run over.
 - Service: enables network access from either within the cluster or between external. processes and the service
