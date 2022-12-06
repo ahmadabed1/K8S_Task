@@ -43,6 +43,10 @@ kubctl get deployment
 5.Run locally:
 open your browser:
 
+```bash
+minikube tunnel
+```
+
 . http://localhost/bitcoin
 
 . http://localhost/ynet
