@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bitcoin
+  name: bitcoin-deployment
   labels:
     app: bitcoin
 spec:
@@ -15,25 +15,33 @@ spec:
         app: bitcoin
     spec:
       containers:
-      - name: bitcoin-web
-        image: ahmad12abed/bitcoin:latest
+      - name: bitcoin
+        image: ahmad12abed/bitcoin
         ports:
         - containerPort: 5000
+          name: bitcoin
+        env:
+            - name: SERVER_PORT
+              value: "5000"
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              value: "6379"
 
 ---
 
 apiVersion: v1
 kind: Service
+
 metadata:
   name: bitcoin-service
-  labels:
-    app: bitcoin-service
+
 spec:
   type: ClusterIP
   selector:
     app: bitcoin
   ports:
-  - name: bitcoin-service
-    protocol: TCP
-    port: 5000
-    targetPort: 5000
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  

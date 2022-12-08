@@ -1,13 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  name: ynet
+  name: ynet-deployment
   labels:
     app: ynet
-spec: 
+
+spec:
   replicas: 1
   selector:
-  
     matchLabels:
       app: ynet
   template:
@@ -16,24 +17,25 @@ spec:
         app: ynet
     spec:
       containers:
-      - name: ynet-web
-        image: ahmad12abed/ynet:latest
-        ports:
-        - containerPort: 8081
+        - name: ynet
+          image: ahmad12abed/ynet
+          ports:
+            - containerPort: 8080
 
 ---
 apiVersion: v1
 kind: Service
+
 metadata:
   name: ynet-service
-  labels: 
-    app: ynet-service
+
 spec:
   type: ClusterIP
   selector:
     app: ynet
   ports:
-  - name: ynet-service
-    protocol: TCP
-    port: 8081
-    targetPort: 8081
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+ 
+
